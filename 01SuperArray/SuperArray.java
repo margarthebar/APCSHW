@@ -86,4 +86,25 @@ public class SuperArray{
 	    return ans;
 	}
     }
+    
+    public Object remove(int index){
+	if(index<0 || index>=size()){
+	    System.out.println("Error: index out of range");
+	    return null;
+	}else{
+	    Object[] ans = new Object[currentLength-1];
+	    int j = 0;
+	    Object removed = data[index];
+	    for(int i=0;i<currentLength;i++){
+		if(i == index){
+		    j=1;
+		}else{
+		    ans[i-j]=data[i];
+		}
+	    }
+	    data = ans;
+	    currentLength-=1;
+	    return removed;
+	}
+    }
 }
