@@ -27,6 +27,21 @@ public class SuperArray{
 	currentLength+=1;
 	data = ans;
     }
+    
+    void add(int index, Object o){
+	Object[] ans = new Object[currentLength+1];
+	ans[index] = o;
+
+	int x = 0;
+	for(int i=0; i<currentLength; i++){
+	    if(i == index){
+	        x=1;
+	    }
+	    ans[i+x] = data[i];
+	}
+	currentLength+=1;
+	data = ans;
+    }
 
     public int size(){
 	return currentLength;
@@ -53,10 +68,22 @@ public class SuperArray{
     }
 
     public Object get(int index){
-        return data[index];
+	if(index< 0 || index>= size()){
+	    System.out.println("Error: index out of range");
+	    return null;
+	}else{
+	    return data[index];
+	}
     }
 
-    public void set(int index, Object e){
-	data[index] = e;
+    public Object set(int index, Object e){
+	if(index<0 || index>=size()){
+	    System.out.println("Error: index out of range");
+	    return null;
+	}else{
+	    Object ans = data[index];
+	    data[index] = e;
+	    return ans;
+	}
     }
 }
