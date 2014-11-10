@@ -17,8 +17,9 @@ public class Test{
 	
 	System.out.println("Testing get(5):\n"+a.get(5));
 
+	System.out.println("set(8,'Hello'):");
 	System.out.println(a.set(8,"Hello"));
-	System.out.println("set(8,'Hello'):\n"+a.toString());
+	System.out.println(a.toString());
 
 	a.add(new Integer(2));
 	System.out.println("add(new Integer(2)):\n"+a.toString());
@@ -29,8 +30,9 @@ public class Test{
 	a.add(new Character('Z'));
 	System.out.println("add(new Character('Z')):\n"+a.toString());
 
+	System.out.println("a.remove(7):");
 	System.out.println(a.remove(7));
-	System.out.println("a.remove(7):\n"+a.toString());
+	System.out.println(a.toString());
 
 	a.resize(5);
 	System.out.println("a.resize(5):\n"+a.toString());
