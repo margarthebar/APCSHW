@@ -34,12 +34,12 @@ public class SuperArray{
 		}
 	    }
 	}else{
-	    Object[] ans = new Object[capacity+1];
+	    Object[] ans = new Object[capacity*2];
 	    for(int i=0;i<capacity;i++){
 		ans[i]=data[i];
 	    }
 	    ans[capacity] = e;
-	    capacity+=1;
+	    capacity*=2;
 	    data = ans;
 	}
     }
@@ -48,18 +48,37 @@ public class SuperArray{
 	if(index<0 || index>= size()){
 	    throw new IndexOutOfBoundsException();
 	}else{
-	    Object[] ans = new Object[capacity+1];
-	    ans[index] = o;
+	    Object[] ans;
 
+	    //test if there's room (is there a null?)
+	    boolean slot = false;
+	    for(int j=0;j<capacity;j++){
+		if(data[j] == null){
+		    slot = true;
+		}
+	    }
+	 
+	    if(!slot){
+		//double capacity
+		ans = new Object[capacity*2];
+	    }else{
+		ans = new Object[capacity];
+		//add o at index, shift everything else over, get rid of a null
+		ans[index] = o;
+	    }
 	    int x = 0;
 	    for(int i=0; i<capacity; i++){
 		if(i == index){
 		    x=1;
 		}
-		ans[i+x] = data[i];
+		if(i+x<=capacity-1){
+		    ans[i+x] = data[i];
+		}
 	    }
-	    capacity+=1;
 	    data = ans;
+	    if(!slot){
+		capacity*=2;
+	    }
 	}
     }
 
