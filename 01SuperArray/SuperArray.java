@@ -128,19 +128,41 @@ public class SuperArray{
 	if(index<0 || index>=size()){
 	    throw new IndexOutOfBoundsException();
 	}else{
-	    Object[] ans = new Object[capacity-1];
-	    int j = 0;
-	    Object removed = data[index];
-	    for(int i=0;i<capacity;i++){
-		if(i == index){
-		    j=1;
-		}else{
-		    ans[i-j]=data[i];
+	    Object[] ans;
+
+	    int count = 0;
+	    for(int j=0;j<capacity;j++){
+		if(data[j] != null){
+		    count++;
 		}
 	    }
-	    data = ans;
-	    capacity-=1;
-	    return removed;
+	    if(data[index]!=null){
+		count--;
+	    }
+	    if(count<=capacity/4){
+		ans = new Object[capacity/4];
+		int j=0;
+		for(int i=0;i<capacity/4;i++){
+		    if(i == index){
+			j=1;
+		    }else{
+			ans[i-j]=data[i];
+		    }
+		} 
+		capacity/=4;
+	    }else{
+		ans = new Object[capacity];
+		int j=0;
+		for(int i=0;i<capacity;i++){
+		    if(i == index){
+			j=1;
+		    }else{
+			ans[i-j]=data[i];
+		    }
+		}
+		data = ans;
+	    }
+	    return data[index];
 	}
     }
 }
