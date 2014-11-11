@@ -38,16 +38,7 @@ public class Main{
 	
 	try{
 	    System.out.println("set(1,new Integer(2)):");
-	    System.out.println("Returns:\n"+a.set(1,new Integer(2)));
-	    System.out.println(a.toString());
-	    System.out.println();
-	}catch(IndexOutOfBoundsException e){
-	    System.out.println("Index out of range");
-	    System.out.println();
-	}
-	try{
-	    System.out.println("set(8,new Integer(7)):");
-	    System.out.println("Returns:\n"+a.set(8,new Integer(7)));
+	    System.out.println("Returns: "+a.set(1,new Integer(2)));
 	    System.out.println(a.toString());
 	    System.out.println();
 	}catch(IndexOutOfBoundsException e){
@@ -56,7 +47,7 @@ public class Main{
 	}
 	try{
 	    System.out.println("set(15,new Integer(2)):");
-	    System.out.println("Returns:\n"+a.set(15,new Integer(2)));
+	    System.out.println("Returns: "+a.set(15,new Integer(2)));
 	    System.out.println(a.toString());
 	    System.out.println();
 	}catch(IndexOutOfBoundsException e){
@@ -116,11 +107,39 @@ public class Main{
 	    System.out.println("Index out of range");
 	    System.out.println();
 	}
-	
-	System.out.println("a.resize(5):\n");
-	a.resize(5);
+
+	System.out.println("a.resize(4):\n");
+	a.resize(4);
 	System.out.println(a.toString());
 	System.out.println();
+
+	try{
+	    System.out.println("a.remove(0):");
+	    System.out.println("Returns: "+a.remove(0));
+	    System.out.println(a.toString());
+	    System.out.println();
+	}catch(IndexOutOfBoundsException e){
+	    System.out.println("Index out of range");
+	    System.out.println();
+	}
+	try{
+	    System.out.println("a.remove(0):");
+	    System.out.println("Returns: "+a.remove(0));
+	    System.out.println(a.toString());
+	    System.out.println();
+	}catch(IndexOutOfBoundsException e){
+	    System.out.println("Index out of range");
+	    System.out.println();
+	}
+	try{
+	    System.out.println("a.remove(0):");
+	    System.out.println("Returns: "+a.remove(0));
+	    System.out.println(a.toString());
+	    System.out.println();
+	}catch(IndexOutOfBoundsException e){
+	    System.out.println("Index out of range");
+	    System.out.println();
+	}
 
 	System.out.println("a.clear():");
 	a.clear();
