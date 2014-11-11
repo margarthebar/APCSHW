@@ -27,20 +27,24 @@ public class SuperArray{
 	currentLength+=1;
 	data = ans;
     }
-    
-    void add(int index, Object o){
-	Object[] ans = new Object[currentLength+1];
-	ans[index] = o;
 
-	int x = 0;
-	for(int i=0; i<currentLength; i++){
-	    if(i == index){
-	        x=1;
+    void add(int index, Object o){
+	if(index<0 || index>= size()){
+	    throw new IndexOutOfBoundsException();
+	}else{
+	    Object[] ans = new Object[currentLength+1];
+	    ans[index] = o;
+
+	    int x = 0;
+	    for(int i=0; i<currentLength; i++){
+		if(i == index){
+		    x=1;
+		}
+		ans[i+x] = data[i];
 	    }
-	    ans[i+x] = data[i];
+	    currentLength+=1;
+	    data = ans;
 	}
-	currentLength+=1;
-	data = ans;
     }
 
     public int size(){
@@ -84,7 +88,7 @@ public class SuperArray{
 	    return ans;
 	}
     }
-    
+
     public Object remove(int index){
 	if(index<0 || index>=size()){
 	    throw new IndexOutOfBoundsException();
