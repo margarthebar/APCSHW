@@ -1,6 +1,6 @@
-import java.util.ArrayList;
+import java.util.*;
 
-public class Driver{
+public class ArrayListMethods{
     public static void main(String[]args){
 	ArrayList<Integer> L = new ArrayList<Integer>(14);
 	L.add(new Integer(1));
@@ -18,7 +18,17 @@ public class Driver{
 	L.add(new Integer(8));
 	L.add(new Integer(9));
 	System.out.println(L);
+
 	collapseDuplicates(L);
+	System.out.println(L);
+
+	randomize(L);
+	System.out.println(L);
+
+	randomize(L);
+	System.out.println(L);
+
+	randomize(L);
 	System.out.println(L);
 	
     }
@@ -28,6 +38,14 @@ public class Driver{
 	    L.remove(L.get(i));
 		collapseDuplicates(L);
 	    }
+	}
+    }
+
+    public static void randomize(ArrayList<Integer> L){
+	Random rand = new Random();
+
+	for(int i=L.size(); i>1; i--){
+	    L.add(L.remove(rand.nextInt(i)));
 	}
     }
 }
