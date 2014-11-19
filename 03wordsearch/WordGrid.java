@@ -10,7 +10,7 @@ public class WordGrid{
 	data = new char[rows][cols];
 	for(int r=0; r<rows; r++){
 	    for(int c=0; c<cols; c++){
-		data[r][c] = "_";
+		data[r][c] = '_';
 	    }
 	}
     }
@@ -18,7 +18,7 @@ public class WordGrid{
     /**Set all values in the WordGrid to spaces ' '*/
     private void clear(){
 	for(int i=0; i<data.length; i++){
-	    data[i] = "_";
+	    data[i] = '_';
 	}
     }
 
