@@ -17,7 +17,9 @@ public class WordGrid{
 
     /**Set all values in the WordGrid to spaces ' '*/
     private void clear(){
-	
+	for(int i=0; i<data.length; i++){
+	    data[i] = "_";
+	}
     }
 
     /**The proper formatting for a WordGrid is created in the toString.
