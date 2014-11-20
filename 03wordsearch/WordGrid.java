@@ -53,8 +53,8 @@ public class WordGrid{
      */
     public boolean addWordHorizontal(String word,int row, int col){
 	Random rand = new Random();
-	for(int i=0; i<data[row].length-col; i++){
-	    if((data[row][col+i] != '-' && data[row][col+i] != word.charAt(i)) || word.length() > data[row].length-col){
+	for(int i=0; i<word.length(); i++){
+	    if(word.length() > data[row].length-col || (data[row][col+i] != '-' && data[row][col+i] != word.charAt(i))){
 		return false;
 	    }
 	}
@@ -67,8 +67,8 @@ public class WordGrid{
     //vertical + diagonal should be implemented as well.
 
     public boolean addWordVertical(String word, int row, int col){
-	for(int i=0; i<data.length; i++){
-	    if((data[row+i][col] != '-' && data[row+i][col] != word.charAt(i)) || word.length() > data.length-row){
+	for(int i=0; i<word.length(); i++){
+	    if(word.length() > data.length-row || (data[row+i][col] != '-' && data[row+i][col] != word.charAt(i))){
 		return false;
 	    }
 	}
@@ -78,5 +78,17 @@ public class WordGrid{
 	return true;
     }
 
+    public boolean addWordDiagonal(String word, int row, int col){
+	for(int i=0; i<word.length(); i++){
+	    if(word.length() > data.length-col ||  word.length() > data.length-row || (data[row+i][col+i] != '-' && data[row+i][col+i] != word.charAt(i))){
+		return false;
+	    }
+	}
+	for(int i=0; i<word.length(); i++){
+	    data[row+i][col+i] = word.charAt(i);
+	}
+	return true;
+    }
 
+    //&& data[row+r][col+c] != word.charAt(r) || word.length() > data.length-col ||  word.length() > data.length-row
 }
