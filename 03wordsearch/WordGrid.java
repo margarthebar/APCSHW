@@ -64,13 +64,13 @@ public class WordGrid{
     }
 
     public boolean addWordHorizontal(String word, int row, int col){
-	addWord(word,row,col,data[row].length-col,0,1);
+	return addWord(word,row,col,data[row].length-col,0,1);
     }
     public boolean addWordVertical(String word, int row, int col){
-	addWord(word,row,col,data.length-row,1,0);
+	return addWord(word,row,col,data.length-row,1,0);
     }
-    public boolean addWorddiagonal(String word, int row, int col){
-	addWord(word,row,col,data.length-row,1,1);
+    public boolean addWordDiagonal(String word, int row, int col){
+	return addWord(word,row,col,data.length-row,1,1);
     }
   
   
