@@ -17,8 +17,10 @@ public class WordGrid{
 
     /**Set all values in the WordGrid to spaces ' '*/
     private void clear(){
-	for(int i=0; i<data.length; i++){
-	    data[i] = '_';
+	for(int r=0; r<data.length; r++){
+	    for(int c=0; c<data[r].length; c++){
+		data[r][c] = '_';
+	    }
 	}
     }
 
@@ -27,6 +29,14 @@ public class WordGrid{
      *separated by newlines.
      */
     public String toString(){
+	String ans = "";
+	for(int r=0; r<data.length; r++){
+	    for(int c=0; c<data[r].length; c++){
+		ans+=data[r][c]+" ";
+	    }
+	    ans+="\n";
+	}
+	return ans;
     }
 
     /**Attempts to add a given word to the specified position of the WordGrid.
