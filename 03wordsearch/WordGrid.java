@@ -51,44 +51,26 @@ public class WordGrid{
      *@return true when the word is added successfully. When the word doesn't fit,
      *or there are overlapping letters that do not match, then false is returned.
      */
-    public boolean addWordHorizontal(String word,int row, int col){
-	Random rand = new Random();
+    public boolean addWord(String word, int row, int col, int space, int rowChange, int colChange){
 	for(int i=0; i<word.length(); i++){
-	    if(word.length() > data[row].length-col || (data[row][col+i] != '-' && data[row][col+i] != word.charAt(i))){
+	    if(word.length() > space || (data[row+(i*rowChange)][col+(i*colChange)] != '-' && data[row+(i*rowChange)][col+(i*colChange)] != word.charAt(i))){
 		return false;
 	    }
 	}
-	for(int i=0; i<data[row].length-col; i++){
-	    data[row][col+i] = word.charAt(i);
+	for(int i=0; i<word.length(); i++){
+	    data[row+(i*rowChange)][col+(i*colChange)] = word.charAt(i);
 	}
 	return true;
     }
 
-    //vertical + diagonal should be implemented as well.
-
+    public boolean addWordHorizontal(String word, int row, int col){
+	addWord(word,data[row].length-col,row,col,0,1);
+    }
     public boolean addWordVertical(String word, int row, int col){
-	for(int i=0; i<word.length(); i++){
-	    if(word.length() > data.length-row || (data[row+i][col] != '-' && data[row+i][col] != word.charAt(i))){
-		return false;
-	    }
-	}
-	for(int i=0; i<data.length-row; i++){
-	    data[row+i][col] = word.charAt(i);
-	}
-	return true;
+	addWord(word,data.length-row,row,col,1,0);
     }
-
-    public boolean addWordDiagonal(String word, int row, int col){
-	for(int i=0; i<word.length(); i++){
-	    if(word.length() > data.length-col ||  word.length() > data.length-row || (data[row+i][col+i] != '-' && data[row+i][col+i] != word.charAt(i))){
-		return false;
-	    }
-	}
-	for(int i=0; i<word.length(); i++){
-	    data[row+i][col+i] = word.charAt(i);
-	}
-	return true;
+    public boolean addWorddiagonal(String word, int row, int col){
+	addWord(word,data.length-row,row,col,1,1);
     }
-
-    //&& data[row+r][col+c] != word.charAt(r) || word.length() > data.length-col ||  word.length() > data.length-row
+  
 }
