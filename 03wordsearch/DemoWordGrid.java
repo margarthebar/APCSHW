@@ -9,5 +9,18 @@ public class DemoWordGrid{
 
 	System.out.println(puzzle.addWordHorizontal("BUNNY",3,0));
 	System.out.println(puzzle.toString());
+
+	System.out.println(puzzle.addWordVertical("STEAK",0,2));
+	System.out.println(puzzle.toString());
+
+	System.out.println(puzzle.addWordVertical("FIEND",1,2));
+	System.out.println(puzzle.toString());
+
+	System.out.println(puzzle.addWordVertical("FIEND",1,1));
+	System.out.println(puzzle.toString());
+
+	System.out.println(puzzle.addWordVertical("FIEND",0,2));
+	System.out.println(puzzle.toString());
+		     
     }
 }
