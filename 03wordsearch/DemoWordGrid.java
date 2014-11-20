@@ -21,6 +21,11 @@ public class DemoWordGrid{
 
 	System.out.println(puzzle.addWordVertical("FIEND",0,2));
 	System.out.println(puzzle.toString());
-		     
+	
+	System.out.println(puzzle.addWordDiagonal("STEAK",0,0));
+	System.out.println(puzzle.toString());
+
+	System.out.println(puzzle.addWordDiagonal("AIRY",0,1));
+	System.out.println(puzzle.toString());
     }
 }
