@@ -73,7 +73,7 @@ public class WordGrid{
 	return addWord(word,row,col,data.length-row,1,1);
     }
     public boolean addWordDiagonal1(String word, int row, int col){
-	return addWord(word,row,col,data.length-row,-1,-1);
+	return addWord(word,row,col,data.length-row,1,-1);
     }
     public String flip(String word){
 	String flipped = "";
