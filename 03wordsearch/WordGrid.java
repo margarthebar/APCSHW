@@ -70,17 +70,18 @@ public class WordGrid{
 	return addWord(word,row,col,data.length-row,1,0);
     }
     public boolean addWordDiagonal(String word, int row, int col){
-	return addWord(word,row,col,data.length-row,1,1);
+	if(row >= col){
+	    return addWord(word,row,col,data.length-row,1,1);
+	}else{
+	    return addWord(word,row,col,data[row].length-col,1,1);
+	}
     }
     public boolean addWordDiagonal1(String word, int row, int col){
-	return addWord(word,row,col,data.length-row,1,-1);
-    }
-    public String flip(String word){
-	String flipped = "";
-	for(int i=0; i<word.length(); i++){
-	    flipped +=word.charAt(word.length()-1-i);
+	if(row >= col){
+	    return addWord(word,row,col,data.length-row,1,-1);
+	}else{
+	    return addWord(word,row,col,data[row].length-col,1,-1);
 	}
-	return flipped;
     }
   
 }
