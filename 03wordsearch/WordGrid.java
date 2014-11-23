@@ -77,11 +77,15 @@ public class WordGrid{
 	}
     }
     public boolean addWordDiagonal1(String word, int row, int col){
-	if(row >= col){
-	    return addWord(word,row,col,data.length-row,1,-1);
-	}else{
-	    return addWord(word,row,col,data[row].length-col,1,-1);
+	for(int i=0; i<word.length(); i++){
+	    if(word.length() > data.length-row || word.length() > col || (data[row+i][col-i] != '-' && data[row+i][col-i] != word.charAt(i))){
+		return false;
+	    }
 	}
+	for(int i=0; i<word.length(); i++){
+	    data[row+i][col-i] = word.charAt(i);
+	}
+	return true;
     }
   
 }
