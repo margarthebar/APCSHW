@@ -34,7 +34,7 @@ public class DemoWordGrid{
 	int tries = 0;
 
 	for(int i=0; i<words.size(); i++){
-	    while(!done && tries<10){
+	    while(!done && tries<100){
 		word = words.get(i);
 
 		if(rand.nextInt(2) == 1){
@@ -60,6 +60,7 @@ public class DemoWordGrid{
 		}
 		tries++;
 	    }
+	    done = false;
 	}
 	System.out.println(puzzle.toString());
 
