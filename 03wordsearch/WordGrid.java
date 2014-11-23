@@ -72,12 +72,15 @@ public class WordGrid{
     public boolean addWordDiagonal(String word, int row, int col){
 	return addWord(word,row,col,data.length-row,1,1);
     }
-    public boolean addWordHorizontalBack(String word, int row, int col){
+    public boolean addWordDiagonal1(String word, int row, int col){
+	return addWord(word,row,col,data.length-row,-1,-1);
+    }
+    public String flip(String word){
 	String flipped = "";
 	for(int i=0; i<word.length(); i++){
 	    flipped +=word.charAt(word.length()-1-i);
 	}
-	return addWordHorizontal(flipped,row,col);
+	return flipped;
     }
   
 }
