@@ -1,9 +1,6 @@
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.Scanner;
-import java.util.NoSuchElementException;
-import java.util.ArrayList;
-import java.util.Random;
+import java.util.*;
 
 public class DemoWordGrid{
     private static WordGrid puzzle = new WordGrid(14,14);
@@ -62,7 +59,11 @@ public class DemoWordGrid{
 	    }
 	    done = false;
 	}
+
+        puzzle.fill();
+
 	System.out.println(puzzle.toString());
 
     }
 }
+
