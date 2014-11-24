@@ -12,7 +12,7 @@ public class WordGrid{
 	data = new char[rows][cols];
 	for(int r=0; r<rows; r++){
 	    for(int c=0; c<cols; c++){
-		data[r][c] = '-';
+		data[r][c] = ' ';
 	    }
 	}
     }
@@ -53,7 +53,7 @@ public class WordGrid{
      */
     public boolean addWord(String word, int row, int col, int space, int rowChange, int colChange){
 	for(int i=0; i<word.length(); i++){
-	    if(word.length() > space || (data[row+(i*rowChange)][col+(i*colChange)] != '-' && data[row+(i*rowChange)][col+(i*colChange)] != word.charAt(i))){
+	    if(word.length() > space || (data[row+(i*rowChange)][col+(i*colChange)] != ' ' && data[row+(i*rowChange)][col+(i*colChange)] != word.charAt(i))){
 		return false;
 	    }
 	}
@@ -78,7 +78,7 @@ public class WordGrid{
     }
     public boolean addWordDiagonal1(String word, int row, int col){
 	for(int i=0; i<word.length(); i++){
-	    if(word.length() > data.length-row || word.length() > col || (data[row+i][col-i] != '-' && data[row+i][col-i] != word.charAt(i))){
+	    if(word.length() > data.length-row || word.length() > col || (data[row+i][col-i] != ' ' && data[row+i][col-i] != word.charAt(i))){
 		return false;
 	    }
 	}
@@ -86,6 +86,19 @@ public class WordGrid{
 	    data[row+i][col-i] = word.charAt(i);
 	}
 	return true;
+    }
+
+    public void fill(){
+	Random rand = new Random();
+	String alpha = "abcdefghijklmnopqrstuvwxyz";
+
+	for(int r=0; r<data.length; r++){
+	    for(int c=0; c<data[r].length; c++){
+		if(data[r][c]==' '){
+		    data[r][c] = alpha.charAt(rand.nextInt(26));
+		}
+	    }
+	}
     }
   
 }
