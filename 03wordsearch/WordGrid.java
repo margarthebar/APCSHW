@@ -5,10 +5,13 @@ import java.io.FileNotFoundException;
 public class WordGrid{
     private char[][]data;
     private Random rand = new Random();
-    
+    private int rows;
+    private int cols;
+
     public void setSeed(long seed){
 	rand = new Random(seed);
     }
+
 
     /**Initialize the grid to the size specified and fill all of the positions
      *with spaces.
@@ -17,6 +20,8 @@ public class WordGrid{
      */
     public WordGrid(int rows,int cols){
 	data = new char[rows][cols];
+	this.rows = rows;
+	this.cols = cols;
 	for(int r=0; r<rows; r++){
 	    for(int c=0; c<cols; c++){
 		data[r][c] = ' ';
@@ -73,16 +78,16 @@ public class WordGrid{
     }
 
     public boolean addWordHorizontal(String word, int row, int col){
-	return addWord(word,row,col,data[row].length-col,0,1);
+	return addWord(word,row,col,cols-col,0,1);
     }
     public boolean addWordVertical(String word, int row, int col){
-	return addWord(word,row,col,data.length-row,1,0);
+	return addWord(word,row,col,rows-row,1,0);
     }
     public boolean addWordDiagonal(String word, int row, int col){
 	if(row >= col){
-	    return addWord(word,row,col,data.length-row,1,1);
+	    return addWord(word,row,col,rows-row,1,1);
 	}else{
-	    return addWord(word,row,col,data[row].length-col,1,1);
+	    return addWord(word,row,col,cols-col,1,1);
 	}
     }
     public boolean addWordDiagonal1(String word, int row, int col){
@@ -140,19 +145,19 @@ public class WordGrid{
 		}
 
 		if(rand.nextInt(4) == 0){
-		    if(addWordHorizontal(words.get(i),rand.nextInt(14),rand.nextInt(14))){
+		    if(addWordHorizontal(words.get(i),rand.nextInt(rows),rand.nextInt(cols))){
 			done = true;
 		    }
 		}else if(rand.nextInt(4) == 1){
-		    if(addWordVertical(words.get(i),rand.nextInt(14),rand.nextInt(14))){
+		    if(addWordVertical(words.get(i),rand.nextInt(rows),rand.nextInt(cols))){
 			done = true;
 		    }
 		}else if(rand.nextInt(4) == 2){
-		    if(addWordDiagonal(words.get(i),rand.nextInt(14),rand.nextInt(14))){
+		    if(addWordDiagonal(words.get(i),rand.nextInt(rows),rand.nextInt(cols))){
 			done = true;
 		    }
 		}else{
-		    if(addWordDiagonal1(words.get(i),rand.nextInt(14),rand.nextInt(14))){
+		    if(addWordDiagonal1(words.get(i),rand.nextInt(rows),rand.nextInt(cols))){
 			done = true;
 		    }
 		}
