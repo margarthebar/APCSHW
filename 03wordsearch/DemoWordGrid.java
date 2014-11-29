@@ -28,11 +28,11 @@ public class DemoWordGrid{
 	    w.setSeed(Long.parseLong(args[2]));  
 	}
 
+	w.grid(args);
 	//w.loadWordsFromFile("fileNameYouMade.txt", /*something from NEW SECTION*/ );
-	//System.out.println( "Find these words:\n"+ w.wordsInPuzzle() );
+	System.out.println( "Find these words:\n"+ w.wordsInPuzzle() );
 	//System.out.println( w );
 	
-	w.grid(args);
 	System.out.println(w.toString());
 
     }
