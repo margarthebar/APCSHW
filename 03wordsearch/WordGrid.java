@@ -5,6 +5,10 @@ import java.io.FileNotFoundException;
 public class WordGrid{
     private char[][]data;
     private Random rand = new Random();
+    
+    public void setSeed(long seed){
+	rand = new Random(seed);
+    }
 
     /**Initialize the grid to the size specified and fill all of the positions
      *with spaces.
