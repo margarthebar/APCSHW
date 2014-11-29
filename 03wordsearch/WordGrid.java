@@ -161,6 +161,7 @@ public class WordGrid{
 
 		if(rand.nextInt(4) == 0){
 		    if(addWordHorizontal(word,rand.nextInt(rows),rand.nextInt(cols))){
+			System.out.println("added");
 			wordsAdded.add(words.get(i));
 			done = true;
 		    }
@@ -192,6 +193,26 @@ public class WordGrid{
 
     public boolean fillRandomLetters(String[] args){
 	return !(args.length>3 && args[3].equals("1"));
+    }
+
+    public String wordsInPuzzle(){
+	System.out.println(wordsAdded.toString());
+	String ans = "";
+	int count = 1;
+	for(int i=0; i<wordsAdded.size(); i++){
+	    for(int d=0; d<16-wordsAdded.get(i).length(); d++){
+		ans+=" ";
+	    }
+	    ans+=wordsAdded.get(i);
+	    if(count<4){
+		ans+="\t";
+		count++;
+	    }else{
+		ans+="\n";
+		count=1;
+	    }
+	}
+	return ans;
     }
   
 }
