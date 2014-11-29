@@ -7,6 +7,8 @@ public class WordGrid{
     private Random rand = new Random();
     private int rows;
     private int cols;
+    private ArrayList<String> wordsAdded = new ArrayList<String>();
+    private ArrayList<String> words = new ArrayList<String>();
 
     public void setSeed(long seed){
 	rand = new Random(seed);
@@ -24,7 +26,7 @@ public class WordGrid{
 	this.cols = cols;
 	for(int r=0; r<rows; r++){
 	    for(int c=0; c<cols; c++){
-		data[r][c] = ' ';
+		data[r][c] = '_';
 	    }
 	}
     }
@@ -33,7 +35,7 @@ public class WordGrid{
     private void clear(){
 	for(int r=0; r<data.length; r++){
 	    for(int c=0; c<data[r].length; c++){
-		data[r][c] = ' ';
+		data[r][c] = '_';
 	    }
 	}
     }
@@ -66,7 +68,7 @@ public class WordGrid{
     public boolean addWord(String word, int row, int col, int space, int rowChange, int colChange){
 	for(int i=0; i<word.length(); i++){
 	    if(word.length() > space ||
-	       (data[row+(i*rowChange)][col+(i*colChange)] != ' ' && 
+	       (data[row+(i*rowChange)][col+(i*colChange)] != '_' && 
 		data[row+(i*rowChange)][col+(i*colChange)] != word.charAt(i))){
 		return false;
 	    }
@@ -92,7 +94,7 @@ public class WordGrid{
     }
     public boolean addWordDiagonal1(String word, int row, int col){
 	for(int i=0; i<word.length(); i++){
-	    if(word.length() > data.length-row || word.length() > col || (data[row+i][col-i] != ' ' && data[row+i][col-i] != word.charAt(i))){
+	    if(word.length() > data.length-row || word.length() > col || (data[row+i][col-i] != '_' && data[row+i][col-i] != word.charAt(i))){
 		return false;
 	    }
 	}
@@ -122,8 +124,7 @@ public class WordGrid{
 	return flipped;
     }
 
-    public void grid() throws FileNotFoundException, NoSuchElementException{
-	ArrayList<String> words = new ArrayList<String>();
+    public void grid(String[] args) throws FileNotFoundException, NoSuchElementException{
 
 	File input = new File("words.txt");
 	Scanner in = new Scanner(input);
@@ -146,18 +147,22 @@ public class WordGrid{
 
 		if(rand.nextInt(4) == 0){
 		    if(addWordHorizontal(words.get(i),rand.nextInt(rows),rand.nextInt(cols))){
+			wordsAdded.add(words.get(i));
 			done = true;
 		    }
 		}else if(rand.nextInt(4) == 1){
 		    if(addWordVertical(words.get(i),rand.nextInt(rows),rand.nextInt(cols))){
+			wordsAdded.add(words.get(i));
 			done = true;
 		    }
 		}else if(rand.nextInt(4) == 2){
 		    if(addWordDiagonal(words.get(i),rand.nextInt(rows),rand.nextInt(cols))){
+			wordsAdded.add(words.get(i));
 			done = true;
 		    }
 		}else{
 		    if(addWordDiagonal1(words.get(i),rand.nextInt(rows),rand.nextInt(cols))){
+			wordsAdded.add(words.get(i));
 			done = true;
 		    }
 		}
@@ -166,7 +171,13 @@ public class WordGrid{
 	    done = false;
 	}
 
-	fill();
+	if(fillRandomLetters(args)){
+	    fill();
+	}
+    }
+
+    public boolean fillRandomLetters(String[] args){
+	return (args.length>3 && args[3] == "1");
     }
   
 }
