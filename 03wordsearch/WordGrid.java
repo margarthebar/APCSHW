@@ -160,22 +160,22 @@ public class WordGrid{
 		}
 
 		if(rand.nextInt(4) == 0){
-		    if(addWordHorizontal(words.get(i),rand.nextInt(rows),rand.nextInt(cols))){
+		    if(addWordHorizontal(word,rand.nextInt(rows),rand.nextInt(cols))){
 			wordsAdded.add(words.get(i));
 			done = true;
 		    }
 		}else if(rand.nextInt(4) == 1){
-		    if(addWordVertical(words.get(i),rand.nextInt(rows),rand.nextInt(cols))){
+		    if(addWordVertical(word,rand.nextInt(rows),rand.nextInt(cols))){
 			wordsAdded.add(words.get(i));
 			done = true;
 		    }
 		}else if(rand.nextInt(4) == 2){
-		    if(addWordDiagonal(words.get(i),rand.nextInt(rows),rand.nextInt(cols))){
+		    if(addWordDiagonal(word,rand.nextInt(rows),rand.nextInt(cols))){
 			wordsAdded.add(words.get(i));
 			done = true;
 		    }
 		}else{
-		    if(addWordDiagonal1(words.get(i),rand.nextInt(rows),rand.nextInt(cols))){
+		    if(addWordDiagonal1(word,rand.nextInt(rows),rand.nextInt(cols))){
 			wordsAdded.add(words.get(i));
 			done = true;
 		    }
