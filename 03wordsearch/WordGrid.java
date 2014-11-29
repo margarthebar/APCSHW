@@ -123,7 +123,7 @@ public class WordGrid{
 
 	for(int r=0; r<data.length; r++){
 	    for(int c=0; c<data[r].length; c++){
-		if(data[r][c]==' '){
+		if(data[r][c]=='_'){
 		    data[r][c] = alpha.charAt(rand.nextInt(26));
 		}
 	    }
@@ -191,7 +191,7 @@ public class WordGrid{
     }
 
     public boolean fillRandomLetters(String[] args){
-	return (args.length>3 && args[3] == "1");
+	return !(args.length>3 && args[3].equals("1"));
     }
   
 }
