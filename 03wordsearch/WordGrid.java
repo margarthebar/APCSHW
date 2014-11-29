@@ -65,9 +65,9 @@ public class WordGrid{
      *@return true when the word is added successfully. When the word doesn't fit,
      *or there are overlapping letters that do not match, then false is returned.
      */
-    public boolean addWord(String word, int row, int col, int space, int rowChange, int colChange){
+    public boolean addWord(String word, int row, int col, boolean noSpace, int rowChange, int colChange){
 	for(int i=0; i<word.length(); i++){
-	    if(word.length() > space ||
+	    if(noSpace ||
 	       (data[row+(i*rowChange)][col+(i*colChange)] != '_' && 
 		data[row+(i*rowChange)][col+(i*colChange)] != word.charAt(i))){
 		return false;
@@ -80,21 +80,34 @@ public class WordGrid{
     }
 
     public boolean addWordHorizontal(String word, int row, int col){
-	return addWord(word,row,col,cols-col,0,1);
+	boolean noSpace = word.length() > cols-col;
+	return addWord(word,row,col,noSpace,0,1);
     }
     public boolean addWordVertical(String word, int row, int col){
-	return addWord(word,row,col,rows-row,1,0);
+	boolean noSpace = word.length() > rows-row;
+	return addWord(word,row,col,noSpace,1,0);
     }
     public boolean addWordDiagonal(String word, int row, int col){
-	if(row >= col){
-	    return addWord(word,row,col,rows-row,1,1);
-	}else{
-	    return addWord(word,row,col,cols-col,1,1);
+	boolean noSpace = word.length() > rows-row || word.length() > cols-col;
+	return addWord(word,row,col,noSpace,1,1);
+	/*
+        for(int i=0; i<word.length(); i++){
+	    if(word.length() > rows-row || word.length() > cols-col || (data[row+i][col+i] != '_' && data[row+i][col+i] != word.charAt(i))){
+		return false;
+	    }
 	}
+	for(int i=0; i<word.length(); i++){
+	    data[row+i][col+i] = word.charAt(i);
+	}
+	return true;
+	*/
     }
     public boolean addWordDiagonal1(String word, int row, int col){
+	boolean noSpace = word.length() > rows-row || word.length() > col;
+	return addWord(word,row,col,noSpace,1,-1);
+	/*
 	for(int i=0; i<word.length(); i++){
-	    if(word.length() > data.length-row || word.length() > col || (data[row+i][col-i] != '_' && data[row+i][col-i] != word.charAt(i))){
+	    if(word.length() > rows-row || word.length() > col || (data[row+i][col-i] != '_' && data[row+i][col-i] != word.charAt(i))){
 		return false;
 	    }
 	}
@@ -102,6 +115,7 @@ public class WordGrid{
 	    data[row+i][col-i] = word.charAt(i);
 	}
 	return true;
+	*/
     }
 
     public void fill(){
