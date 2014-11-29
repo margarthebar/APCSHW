@@ -1,7 +1,10 @@
 import java.util.*;
+import java.io.File;
+import java.io.FileNotFoundException;
 
 public class WordGrid{
     private char[][]data;
+    private Random rand = new Random();
 
     /**Initialize the grid to the size specified and fill all of the positions
      *with spaces.
@@ -53,7 +56,9 @@ public class WordGrid{
      */
     public boolean addWord(String word, int row, int col, int space, int rowChange, int colChange){
 	for(int i=0; i<word.length(); i++){
-	    if(word.length() > space || (data[row+(i*rowChange)][col+(i*colChange)] != ' ' && data[row+(i*rowChange)][col+(i*colChange)] != word.charAt(i))){
+	    if(word.length() > space ||
+	       (data[row+(i*rowChange)][col+(i*colChange)] != ' ' && 
+		data[row+(i*rowChange)][col+(i*colChange)] != word.charAt(i))){
 		return false;
 	    }
 	}
@@ -89,7 +94,6 @@ public class WordGrid{
     }
 
     public void fill(){
-	Random rand = new Random();
 	String alpha = "abcdefghijklmnopqrstuvwxyz";
 
 	for(int r=0; r<data.length; r++){
@@ -99,6 +103,61 @@ public class WordGrid{
 		}
 	    }
 	}
+    }
+
+    public String flip(String word){
+	String flipped = "";
+	for(int i=0; i<word.length(); i++){
+	    flipped +=word.charAt(word.length()-1-i);
+	}
+	return flipped;
+    }
+
+    public void grid() throws FileNotFoundException, NoSuchElementException{
+	ArrayList<String> words = new ArrayList<String>();
+
+	File input = new File("words.txt");
+	Scanner in = new Scanner(input);
+
+	while(in.hasNext()){
+	    words.add(in.next());
+	}
+
+	String word = "";
+	boolean done = false;
+	int tries = 0;
+
+	for(int i=0; i<words.size(); i++){
+	    while(!done && tries<100){
+		word = words.get(i);
+
+		if(rand.nextInt(2) == 1){
+		    word = flip(word);
+		}
+
+		if(rand.nextInt(4) == 0){
+		    if(addWordHorizontal(words.get(i),rand.nextInt(14),rand.nextInt(14))){
+			done = true;
+		    }
+		}else if(rand.nextInt(4) == 1){
+		    if(addWordVertical(words.get(i),rand.nextInt(14),rand.nextInt(14))){
+			done = true;
+		    }
+		}else if(rand.nextInt(4) == 2){
+		    if(addWordDiagonal(words.get(i),rand.nextInt(14),rand.nextInt(14))){
+			done = true;
+		    }
+		}else{
+		    if(addWordDiagonal1(words.get(i),rand.nextInt(14),rand.nextInt(14))){
+			done = true;
+		    }
+		}
+		tries++;
+	    }
+	    done = false;
+	}
+
+	fill();
     }
   
 }
