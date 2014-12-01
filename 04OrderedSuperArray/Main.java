@@ -3,11 +3,11 @@ public class Main{
 	SuperArray a = new SuperArray();
 	System.out.println(a.toString());
 
-	a.set(0,new Integer(3));
-	a.set(1,new Integer(5));
-	a.set(2,new Integer(8));
-	a.set(3,new Integer(4));
-	a.set(4,new Integer(1));
+	a.set(0,"dog");
+	a.set(1,"zoo");
+	a.set(2,"game");
+	a.set(3,"gear");
+	a.set(4,"elephant");
 	System.out.println("Original:\n"+a.toString());
 	System.out.println();
 	
@@ -37,8 +37,8 @@ public class Main{
 	}
 	
 	try{
-	    System.out.println("set(1,new Integer(2)):");
-	    System.out.println("Returns: "+a.set(1,new Integer(2)));
+	    System.out.println("set(1,'hi'):");
+	    System.out.println("Returns: "+a.set(1,"hi"));
 	    System.out.println(a.toString());
 	    System.out.println();
 	}catch(IndexOutOfBoundsException e){
@@ -46,8 +46,8 @@ public class Main{
 	    System.out.println();
 	}
 	try{
-	    System.out.println("set(15,new Integer(2)):");
-	    System.out.println("Returns: "+a.set(15,new Integer(2)));
+	    System.out.println("set(15,'animal'):");
+	    System.out.println("Returns: "+a.set(15,"animal"));
 	    System.out.println(a.toString());
 	    System.out.println();
 	}catch(IndexOutOfBoundsException e){
@@ -55,30 +55,10 @@ public class Main{
 	    System.out.println();
 	}
 
-	System.out.println("add(new Integer(2)):");
-	a.add(new Integer(2));
+	System.out.println("add('extreme'):");
+	a.add("extreme");
 	System.out.println(a.toString());
 	System.out.println();
-
-	try{
-	    System.out.println("add(3,new Integer(9)):");
-	    a.add(3,new Integer(9));
-	    System.out.println(a.toString());
-	    System.out.println();
-	}catch(IndexOutOfBoundsException e){
-	    System.out.println("Index out of range");
-	    System.out.println();
-	}
-
-	try{
-	    System.out.println("add(20,new Integer(8)):");
-	    a.add(20,new Integer(8));
-	    System.out.println(a.toString());
-	    System.out.println();
-	}catch(IndexOutOfBoundsException e){
-	    System.out.println("Index out of range");
-	    System.out.println();
-	}
 
 	try{
 	    System.out.println("a.remove(3):");
