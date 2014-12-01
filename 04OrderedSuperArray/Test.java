@@ -1,36 +1,149 @@
-public class Test{
+public class Main{
     public static void main(String[]args){
 	SuperArray a = new SuperArray();
 	System.out.println(a.toString());
 
-	a.set(0,'a');
-	a.set(1,'b');
-	a.set(2,'c');
-	a.set(3,'d');
-	a.set(4,'e');
-	a.set(5,'f');
-	a.set(6,'g');
-	a.set(7,'h');
-	a.set(8,'i');
-	a.set(9,'j');
-	System.out.println(a.toString());
+	a.set(0,new Integer(3));
+	a.set(1,new Integer(5));
+	a.set(2,new Integer(8));
+	a.set(3,new Integer(4));
+	a.set(4,new Integer(1));
+	System.out.println("Original:\n"+a.toString());
+	System.out.println();
 	
-	System.out.println(a.get(5));
+	try{
+	    System.out.println("get(2):");
+	    System.out.println(a.get(2));
+	    System.out.println();
+	}catch(IndexOutOfBoundsException e){
+	    System.out.println("Index out of range");
+	    System.out.println();
+	}
+	try{
+	    System.out.println("get(6):");
+	    System.out.println(a.get(6));
+	    System.out.println();
+	}catch(IndexOutOfBoundsException e){
+	    System.out.println("Index out of range");
+	    System.out.println();
+	}
+	try{
+	    System.out.println("get(15):");
+	    System.out.println(a.get(15));
+	    System.out.println();
+	}catch(IndexOutOfBoundsException e){
+	    System.out.println("Index out of range");
+	    System.out.println();
+	}
+	
+	try{
+	    System.out.println("set(1,new Integer(2)):");
+	    System.out.println("Returns: "+a.set(1,new Integer(2)));
+	    System.out.println(a.toString());
+	    System.out.println();
+	}catch(IndexOutOfBoundsException e){
+	    System.out.println("Index out of range");
+	    System.out.println();
+	}
+	try{
+	    System.out.println("set(15,new Integer(2)):");
+	    System.out.println("Returns: "+a.set(15,new Integer(2)));
+	    System.out.println(a.toString());
+	    System.out.println();
+	}catch(IndexOutOfBoundsException e){
+	    System.out.println("Index out of range");
+	    System.out.println();
+	}
 
-	a.set(8,"Hello");
+	System.out.println("add(new Integer(2)):");
+	a.add(new Integer(2));
 	System.out.println(a.toString());
+	System.out.println();
 
-	a.add(2);
-	System.out.println(a.toString());
-	a.add(new Integer(99));
-	System.out.println(a.toString());
-	a.add(new Character('Z'));
-	System.out.println(a.toString());
+	try{
+	    System.out.println("add(3,new Integer(9)):");
+	    a.add(3,new Integer(9));
+	    System.out.println(a.toString());
+	    System.out.println();
+	}catch(IndexOutOfBoundsException e){
+	    System.out.println("Index out of range");
+	    System.out.println();
+	}
 
+	try{
+	    System.out.println("add(20,new Integer(8)):");
+	    a.add(20,new Integer(8));
+	    System.out.println(a.toString());
+	    System.out.println();
+	}catch(IndexOutOfBoundsException e){
+	    System.out.println("Index out of range");
+	    System.out.println();
+	}
 
-	a.resize(5);
+	try{
+	    System.out.println("a.remove(3):");
+	    System.out.println("Returns: "+a.remove(3));
+	    System.out.println(a.toString());
+	     System.out.println();
+	}catch(IndexOutOfBoundsException e){
+	    System.out.println("Index out of range");
+	    System.out.println();
+	}
+	try{
+	    System.out.println("a.remove(7):");
+	    System.out.println("Returns: "+a.remove(7));
+	    System.out.println(a.toString());
+	    System.out.println();
+	}catch(IndexOutOfBoundsException e){
+	    System.out.println("Index out of range");
+	    System.out.println();
+	}
+	try{
+	    System.out.println("a.remove(20):");
+	    System.out.println("Returns: "+a.remove(20));
+	    System.out.println(a.toString());
+	    System.out.println();
+	}catch(IndexOutOfBoundsException e){
+	    System.out.println("Index out of range");
+	    System.out.println();
+	}
+
+	System.out.println("a.resize(4):\n");
+	a.resize(4);
 	System.out.println(a.toString());
+	System.out.println();
+
+	try{
+	    System.out.println("a.remove(0):");
+	    System.out.println("Returns: "+a.remove(0));
+	    System.out.println(a.toString());
+	    System.out.println();
+	}catch(IndexOutOfBoundsException e){
+	    System.out.println("Index out of range");
+	    System.out.println();
+	}
+	try{
+	    System.out.println("a.remove(0):");
+	    System.out.println("Returns: "+a.remove(0));
+	    System.out.println(a.toString());
+	    System.out.println();
+	}catch(IndexOutOfBoundsException e){
+	    System.out.println("Index out of range");
+	    System.out.println();
+	}
+	try{
+	    System.out.println("a.remove(0):");
+	    System.out.println("Returns: "+a.remove(0));
+	    System.out.println(a.toString());
+	    System.out.println();
+	}catch(IndexOutOfBoundsException e){
+	    System.out.println("Index out of range");
+	    System.out.println();
+	}
+
+	System.out.println("a.clear():");
 	a.clear();
 	System.out.println(a.toString());
+	System.out.println();
     }
 }
