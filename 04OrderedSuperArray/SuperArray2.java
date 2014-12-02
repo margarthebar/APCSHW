@@ -75,7 +75,13 @@ public class SuperArray2{
 	}
     }
     public int size(){
-	return capacity;
+	int size=0;
+	for(int i=0;i<capacity;i++){
+	    if(data[i]!=null){
+		size++;
+	    }
+	}
+	return size;
     }
     public void resize(int newCapacity){
 	String[] ans = new String[newCapacity];
@@ -150,4 +156,25 @@ public class SuperArray2{
 	    return removed;
 	}
     }
+    public void insertionSort(String[] s){
+	int x = 0;
+	//test for each element in array
+	for(int i=1;i<size();i++){
+	    //compare to each element before it in the array
+	    for(int j=0;j<i;j++){
+		//if s[i]<s[j]
+		if(s[i].compareTo(s[j])<0){
+		    //store value to be moved towards the front
+		    x = s[i];
+		    //now shift everything over (k is just j)
+		    for(int k=i;k>j;k--){
+			s[k]=s[k-1];
+		    }
+		    //now add x to the vacant spot
+		    s[j]=x;
+		}
+	    }
+	}
+    }
+
 }
