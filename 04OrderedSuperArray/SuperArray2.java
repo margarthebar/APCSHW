@@ -1,11 +1,11 @@
 public class SuperArray2{
     private String[] data;
     private int capacity;
-    public SuperArray(int size){
+    public SuperArray2(int size){
 	capacity = size;
 	data = new String[size];
     }
-    public SuperArray(){
+    public SuperArray2(){
 	this(10);
     }
     public String toString(){
@@ -18,13 +18,13 @@ public class SuperArray2{
     public void add(String e){
 	boolean slot = false;
 	for(int i=0;i<capacity;i++){
-	    if(data[i].equals(null)){
+	    if(data[i] == null){
 		slot = true;
 	    }
 	}
 	if(slot){
 	    for(int i=0;i<capacity;i++){
-		if(slot && data[i].equals(null)){
+		if(slot && data[i] == null){
 		    data[i] = e;
 		    slot = false;
 		}
@@ -78,7 +78,7 @@ public class SuperArray2{
 	return capacity;
     }
     public void resize(int newCapacity){
-	String[] ans = new Object[newCapacity];
+	String[] ans = new String[newCapacity];
 	if(newCapacity > capacity){
 	    for(int i=0;i<capacity;i++){
 		ans[i] = data[i];
@@ -111,44 +111,43 @@ public class SuperArray2{
 	    return ans;
 	}
     }
+
     public String remove(int index){
 	if(index<0 || index>=size()){
 	    throw new IndexOutOfBoundsException();
 	}else{
-	    String[] ans;
+	    String[] ans = new String[capacity];
+	    String removed = data[index];
+	    int ansIndex=0;
+
+	    for(int i=0;i<capacity;i++){
+		if(i!=index){
+		    ans[ansIndex] = data[i];
+		    ansIndex++;
+		}
+	    }
+
 	    int count = 0;
 	    for(int j=0;j<capacity;j++){
-		if(data[j] != null){
+		if(ans[j] != null){
 		    count++;
 		}
 	    }
-	    if(data[index]!=null){
+	    if(ans[index]!=null){
 		count--;
 	    }
-	    if(count<=capacity/4){
-		ans = new String[capacity/4];
-		int j=0;
-		for(int i=0;i<capacity/4;i++){
-		    if(i == index){
-			j=1;
-		    }else{
-			ans[i-j]=data[i];
-		    }
+	    if(count<capacity/4){
+		String[] ans2 = new String[capacity/4];
+	        capacity/=4;
+		for(int k=0;k<capacity;k++){
+		    ans2[k] = ans[k];
 		}
-		capacity/=4;
-	    }else{
-		ans = new String[capacity];
-		int j=0;
-		for(int i=0;i<capacity;i++){
-		    if(i == index){
-			j=1;
-		    }else{
-			ans[i-j]=data[i];
-		    }
-		}
-		data = ans;
+		ans = ans2;
 	    }
-	    return data[index];
+
+	    data = ans;
+
+	    return removed;
 	}
     }
 }
