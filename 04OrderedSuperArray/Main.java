@@ -29,6 +29,17 @@ public class Main3{
 	System.out.println("Original:\n"+a.toString());
 	System.out.println();
 	
+	try{
+	    System.out.println("set(15,'animal'):");
+	    System.out.println("Returns: "+a.set(15,"animal"));
+	    System.out.println(a.toString());
+	    System.out.println();
+	}catch(IndexOutOfBoundsException e){
+	    System.out.println("Index out of range");
+	    System.out.println();
+	}
+	
+	System.out.println(a.toString());
 
     }
 }
