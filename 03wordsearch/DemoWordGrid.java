@@ -4,10 +4,12 @@ import java.util.*;
 
 public class DemoWordGrid{
 
+    public static boolean fillRandomLetters(String[] args){
+	return !(args.length>3 && args[3].equals("1"));
+    }
+
     public static void main(String[]args) throws FileNotFoundException, NoSuchElementException{
 
-	File input = new File("words.txt");
-	Scanner in = new Scanner(input);
 	int rows = 14;
 	int cols = 14;
 
@@ -23,13 +25,13 @@ public class DemoWordGrid{
 		cols = Integer.parseInt(args[1]);
 	    }
 	}
+
 	WordGrid w = new WordGrid(rows,cols);
 	if(args.length>2){
 	    w.setSeed(Long.parseLong(args[2]));  
 	}
 
-	w.grid(args);
-	//w.loadWordsFromFile("fileNameYouMade.txt", /*something from NEW SECTION*/ );
+	w.loadWordsFromFile("words.txt", fillRandomLetters(args));
 	System.out.println( "Find these words:\n"+ w.wordsInPuzzle() );
 	//System.out.println( w );
 	
