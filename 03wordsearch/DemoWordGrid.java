@@ -33,9 +33,7 @@ public class DemoWordGrid{
 
 	w.loadWordsFromFile("words.txt", fillRandomLetters(args));
 	System.out.println( "Find these words:\n"+ w.wordsInPuzzle() );
-	//System.out.println( w );
-	
-	System.out.println(w.toString());
+	System.out.println( w );
 
     }
 }
