@@ -163,15 +163,15 @@ public class SuperArray2{
 	    //compare to each element before it in the array
 	    for(int j=0;j<i;j++){
 		//if s[i]<s[j]
-		if(s.get(i).compareTo(s.get(j))<0){
+		if(s[i].compareTo(s[j])<0){
 		    //store value to be moved towards the front
-		    x = s.get(i);
+		    x = s[i];
 		    //now shift everything over (k is just j)
 		    for(int k=i;k>j;k--){
-			s.set(k,s.get(k-1));
+			s[k] = s[k-1];
 		    }
 		    //now add x to the vacant spot
-		    s.set(j,x);
+		    s[j] = s[i];
 		}
 	    }
 	}
