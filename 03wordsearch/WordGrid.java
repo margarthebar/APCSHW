@@ -90,32 +90,10 @@ public class WordGrid{
     public boolean addWordDiagonal(String word, int row, int col){
 	boolean noSpace = word.length() > rows-row || word.length() > cols-col;
 	return addWord(word,row,col,noSpace,1,1);
-	/*
-        for(int i=0; i<word.length(); i++){
-	    if(word.length() > rows-row || word.length() > cols-col || (data[row+i][col+i] != '_' && data[row+i][col+i] != word.charAt(i))){
-		return false;
-	    }
-	}
-	for(int i=0; i<word.length(); i++){
-	    data[row+i][col+i] = word.charAt(i);
-	}
-	return true;
-	*/
     }
     public boolean addWordDiagonal1(String word, int row, int col){
 	boolean noSpace = word.length() > rows-row || word.length() > col;
 	return addWord(word,row,col,noSpace,1,-1);
-	/*
-	for(int i=0; i<word.length(); i++){
-	    if(word.length() > rows-row || word.length() > col || (data[row+i][col-i] != '_' && data[row+i][col-i] != word.charAt(i))){
-		return false;
-	    }
-	}
-	for(int i=0; i<word.length(); i++){
-	    data[row+i][col-i] = word.charAt(i);
-	}
-	return true;
-	*/
     }
 
     public void fill(){
@@ -138,15 +116,14 @@ public class WordGrid{
 	return flipped;
     }
 
-    public void grid(String[] args) throws FileNotFoundException, NoSuchElementException{
-
-	File input = new File("words.txt");
+    public void loadWordsFromFile(String fileName, boolean fillRandomLetters) throws FileNotFoundException, NoSuchElementException{
+        File input = new File(fileName);
 	Scanner in = new Scanner(input);
-
+	
 	while(in.hasNext()){
 	    words.add(in.next());
 	}
-
+	
 	String word = "";
 	boolean done = false;
 	int tries = 0;
@@ -186,13 +163,9 @@ public class WordGrid{
 	    done = false;
 	}
 
-	if(fillRandomLetters(args)){
+	if(fillRandomLetters){
 	    fill();
 	}
-    }
-
-    public boolean fillRandomLetters(String[] args){
-	return !(args.length>3 && args[3].equals("1"));
     }
 
     public String wordsInPuzzle(){
