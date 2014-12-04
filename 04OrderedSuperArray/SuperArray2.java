@@ -171,7 +171,7 @@ public class SuperArray2{
 			s[k] = s[k-1];
 		    }
 		    //now add x to the vacant spot
-		    s[j] = s[i];
+		    s[j] = x;
 		}
 	    }
 	}
