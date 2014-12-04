@@ -117,7 +117,6 @@ public class SuperArray2{
 	    return ans;
 	}
     }
-
     public String remove(int index){
 	if(index<0 || index>=size()){
 	    throw new IndexOutOfBoundsException();
@@ -125,14 +124,12 @@ public class SuperArray2{
 	    String[] ans = new String[capacity];
 	    String removed = data[index];
 	    int ansIndex=0;
-
 	    for(int i=0;i<capacity;i++){
 		if(i!=index){
 		    ans[ansIndex] = data[i];
 		    ansIndex++;
 		}
 	    }
-
 	    int count = 0;
 	    for(int j=0;j<capacity;j++){
 		if(ans[j] != null){
@@ -144,37 +141,34 @@ public class SuperArray2{
 	    }
 	    if(count<capacity/4){
 		String[] ans2 = new String[capacity/4];
-	        capacity/=4;
+		capacity/=4;
 		for(int k=0;k<capacity;k++){
 		    ans2[k] = ans[k];
 		}
 		ans = ans2;
 	    }
-
 	    data = ans;
-
 	    return removed;
 	}
     }
-    public void insertionSort(String[] s){
+    public void insertionSort(){
 	String x = "";
 	//test for each element in array
 	for(int i=1;i<size();i++){
 	    //compare to each element before it in the array
 	    for(int j=0;j<i;j++){
-		//if s[i]<s[j]
-		if(s[i].compareTo(s[j])<0){
+		//if data[i]<data[j]
+		if(data[i].compareTo(data[j])<0){
 		    //store value to be moved towards the front
-		    x = s[i];
+		    x = data[i];
 		    //now shift everything over (k is just j)
 		    for(int k=i;k>j;k--){
-			s[k] = s[k-1];
+			data[k] = data[k-1];
 		    }
 		    //now add x to the vacant spot
-		    s[j] = x;
+		    data[j] = x;
 		}
 	    }
 	}
     }
-
 }
