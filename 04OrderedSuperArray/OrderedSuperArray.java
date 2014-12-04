@@ -10,14 +10,14 @@ public class OrderedSuperArray extends SuperArray2{
     }
     public void add(String e){
 	super.add(e);
-	insertionSort(data);
+	insertionSort();
     }
     public void add(int index, String e){
 	this.add(e);
     }
     public String set(int index, String e){
 	String ans = super.set(index,e);
-	insertionSort(data);
+	insertionSort();
 	return ans;
     }
 }
