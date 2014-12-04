@@ -2,9 +2,9 @@ public class Main3{
     public static void main(String[]args){
 	OrderedSuperArray a = new OrderedSuperArray();
 	System.out.println(a.toString());
-
 	a.add("dog");
 	System.out.println(a.toString());
+	System.out.println("zoo".compareTo("dog"));
 	a.add("zoo");
 	System.out.println(a.toString());
 	a.add("game");
@@ -26,20 +26,16 @@ public class Main3{
 	a.add("away");
 	System.out.println(a.toString());
 	a.add("sea");
-	System.out.println("Original:\n"+a.toString());
 	System.out.println();
-	
 	try{
-	    System.out.println("set(15,'animal'):");
-	    System.out.println("Returns: "+a.set(15,"animal"));
+	    System.out.println("set(8,'animal'):");
+	    System.out.println("Returns: "+a.set(8,"animal"));
 	    System.out.println(a.toString());
 	    System.out.println();
 	}catch(IndexOutOfBoundsException e){
 	    System.out.println("Index out of range");
 	    System.out.println();
 	}
-	
 	System.out.println(a.toString());
-
     }
 }
