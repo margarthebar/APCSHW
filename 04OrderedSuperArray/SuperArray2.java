@@ -179,4 +179,7 @@ public class SuperArray2{
 	}
 	return -1;
     }
+    public String[] getData(){
+	return data;
+    }
 }
