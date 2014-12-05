@@ -52,5 +52,9 @@ public class Main3{
 	    System.out.println();
 	}
 	System.out.println(a.toString());
+	
+	System.out.println(a.find("kingdom"));
+	System.out.println(a.find("time"));
+	System.out.println(a.find("dog"));
     }
 }
