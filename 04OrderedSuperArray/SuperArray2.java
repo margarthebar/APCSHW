@@ -171,6 +171,20 @@ public class SuperArray2{
 	    }
 	}
     }
+    public void selectionSort(){
+	String smallest = data[0];
+	int smallestIndex = 0;
+	for(int i=0; i<size(); i++){
+	    for(int j=i; j<size(); j++){
+		if(data[j].compareTo(smallest)<0){
+		    smallest = data[j];
+		    smallestIndex = j;
+		}
+	    }
+	    data[smallestIndex] = data[0];
+	    data[0] = smallest;
+	}
+    }
     public int find(String target){
 	for(int i=0; i<size(); i++){
 	    if(data[i].equals(target)){
