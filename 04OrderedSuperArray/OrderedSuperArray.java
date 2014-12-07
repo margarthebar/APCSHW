@@ -17,47 +17,45 @@ public class OrderedSuperArray extends SuperArray2{
 	insertionSort();
 	return ans;
     }
+
     public int find(String target){
-	int upper = size();
 	int lower = 0;
-	int index = size()/2;
-	int real = index;
-	String[] copy = new String[size()];
+	int upper = size()-1;
+	int index = (size()-1)/2;
 	boolean loop = true;
 
 	while(loop){
-	    if(size()<=1){
-		loop = false;
-		return -1;
+	    //GO LOWER
+	    if(getData()[index].compareTo(target)>0){
+		//checks to see if element isn't there
+		if(lower == upper){
+		    return -1;
+		}
+		upper = index-1;
+		index = lower + (upper-lower)/2; 
 	    }
+
+	    //GO HIGHER
+	    if(getData()[index].compareTo(target)<0){
+		//checks to see if element isn't there
+		if(lower == upper){
+		    return -1;
+		}
+		lower = index+1;
+		index = lower + (upper-lower)/2; 
+	    }
+
+	    //FOUND!
 	    if(getData()[index].equals(target)){
-		System.out.println("found");
-		for(int i=index-1;i>=0;i--){
-		    if(getData()[i].equals(target)){
-			index = i;
-		    }else{
-			loop = false;
-			return index;
-		    }
-		}   
-	    }else if(getData()[index].compareTo(target)>0){
-		int i=index;
-		while(i<size()){
-		    remove(i);
-		    System.out.println(toString());
+		//check for earlier instances
+		if(getData()[index-1].equals(target)){
+		    index--;
+		}else{
+		    loop = false;
 		}
-		System.out.println(size()/2);
-		index = size()/2;
-	    }else{
-		String x = getData()[index];
-		while(!getData()[0].equals(x)){
-		    remove(0);
-		    System.out.println(toString());
-		}
-		System.out.println(size()/2);
-		index = size()/2;
 	    }
 	}
 	return index;
     }
 }
+
