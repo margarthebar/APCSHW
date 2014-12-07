@@ -7,6 +7,7 @@ public class Main3{
 	b.add("little");
 	b.add("lamb");
 	b.add("chop");
+
 	b.add("had");
 	b.add("little");
 	System.out.println(b.toString());
@@ -19,7 +20,6 @@ public class Main3{
 	System.out.println(a.toString());
 	a.add("dog");
 	System.out.println(a.toString());
-	System.out.println("zoo".compareTo("dog"));
 	a.add("zoo");
 	System.out.println(a.toString());
 	a.add("game");
@@ -51,10 +51,9 @@ public class Main3{
 	    System.out.println("Index out of range");
 	    System.out.println();
 	}
-	System.out.println(a.toString());
-	
 	System.out.println(a.find("kingdom"));
 	System.out.println(a.find("time"));
 	System.out.println(a.find("dog"));
+	System.out.println(a.find("lanyard"));
     }
 }
