@@ -193,6 +193,15 @@ public class SuperArray2{
 	}
 	return -1;
     }
+    public void badInsertionSort(){
+        SuperArray2 c = new SuperArray2();
+        while( this.size() > 0){ 
+            c.add(this.remove(0));
+        }
+        while(c.size() > 0){
+            this.add(c.remove(0));
+        }
+    }
     public String[] getData(){
 	return data;
     }
