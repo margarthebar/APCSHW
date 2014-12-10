@@ -4,37 +4,42 @@ import java.awt.event.*;
 public class Window2 extends JFrame implements ActionListener{//requires overriding abstract method actionPerformed
     private Container pane;
     private JButton b;
-    private JLabel l;
+    private JLabel lt,lc;
     private JTextField t;
     private JCheckBox c,f;
     public Window2() {
 	this.setTitle("Celsius-Fahrenheit Converter");
-	this.setSize(600,100);
+	this.setSize(600,200);
 	this.setLocation(100,100);
 	this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
 
 	pane = this.getContentPane();
-	pane.setLayout(new GridLayout(2,1));
+	pane.setLayout(new GridLayout(3,1));
+	
+	lt = new JLabel("Input: ",null,JLabel.CENTER);
+	t = new JTestField(12);
+	lc = new JLabel("Convert to:",null,JLabel.CENTER);
+	c = new JCheckBox("Celsius");
+	f = new JCheckBox("Fahrenheit");
+        b = new JButton("Convert!");
 
-	b = new JButton("");
-	l = new JLabel("This is AWESOME! (lies)",null,JLabel.CENTER);
-	t = new JTextField(12);
-	c = new JCheckBox("Overclock!!!");
 
 	b.addActionListener(this);
-	b.setActionCommand("Do Something");
+	b.setActionCommand("Convert!");
 
-	pane.add(l);
-	pane.add(b);
+	pane.add(lt);
 	pane.add(t);
+	pane.add(lc);
 	pane.add(c);
+	pane.add(f);
+	pane.add(b);
     }
 
     public void actionPerformed(ActionEvent e){
 	String s = e.getActionCommand();       
 	System.out.println(s);
-	if(s.equals("Do Something")){
+	if(s.equals("Convert!")){
 	    String text = t.getText();
 	    text+=".";
 	    t.setText(text);
