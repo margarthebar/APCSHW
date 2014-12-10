@@ -39,10 +39,10 @@ public class Window2 extends JFrame implements ActionListener{//requires overrid
     public void actionPerformed(ActionEvent e){
 	String s = e.getActionCommand();       
 	System.out.println(s);
-	if(s.equals("Convert!")){
-	    String text = t.getText();
-	    text+=".";
-	    t.setText(text);
+	if(c.isSelected()){
+	    //do conversion to Celsius
+	}else if(f.isSelected()){
+	    //do converion to Fahrenheit
 	}
     }
 
