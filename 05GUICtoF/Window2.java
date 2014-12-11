@@ -39,24 +39,27 @@ public class Window2 extends JFrame implements ActionListener{//requires overrid
 	b.setActionCommand("Convert!");
     }
 
-    public long convert(long num){
-	long ans = 0.0;
+    public double convert(double num){
+	double ans = 0.0;
 	if(c.isSelected()){
-	    ans = (num-32)*(5/9);
+	    ans = (num-32)*(5.0/9.0);
 	}else{
-	    ans = (num+32)*(9/5);
+	    ans = (num+32)*(9.0/5.0);
 	}
+	return ans;
     }
 
     public void actionPerformed(ActionEvent e){
 	String s = e.getActionCommand();       
-	System.out.println(s);
+	String input = t.getText();
+	double in = Double.parseDouble(input);
+	t.setText(""+convert(in));
 	if(c.isSelected()){
-	    System.out.println("Celsius selected");
-	    //do conversion to Celsius
-	}else if(f.isSelected()){
-	    System.out.println("Fahrenheit selected");
-	    //do converion to Fahrenheit
+	    f.setSelected(true);
+	    c.setSelected(false);
+	}else{
+	    c.setSelected(true);
+	    f.setSelected(false);
 	}
     }
 
