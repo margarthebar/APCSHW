@@ -1,5 +1,6 @@
 public class Sorts{
-     public void insertionSort(){
+    /*
+     public void insertionSort(int[]c){
 	String x = "";
 	//test for each element in array
 	for(int i=1;i<size();i++){
@@ -19,7 +20,7 @@ public class Sorts{
 	    }
 	}
     }
-    public void selectionSort(){
+    public void selectionSort(int[]c){
 	String smallest = data[0];
 	int smallestIndex = 0;
 	for(int i=0; i<size(); i++){
@@ -32,9 +33,18 @@ public class Sorts{
 	    data[smallestIndex] = data[0];
 	    data[0] = smallest;
 	}
-    }
-    public static void bubbleSort(){
-
+    }*/
+    public static void bubbleSort(int[]c){
+	int temp = 0;
+	for(int upper=c.length; upper>1; upper--){
+	    for(int i=0; i<upper; i++){
+		if(c[i+1]<c[i]){
+		    temp = c[i];
+		    c[i] = c[i+1];
+		    c[i+1] = c[i];
+		}
+	    }
+	}
     }
 
     public static void main(String[]args){
