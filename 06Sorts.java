@@ -1,3 +1,4 @@
+import java.util.Arrays;
 public class Sorts{
     /*
      public void insertionSort(int[]c){
@@ -37,7 +38,7 @@ public class Sorts{
     public static void bubbleSort(int[]c){
 	int temp = 0;
 	for(int upper=c.length; upper>1; upper--){
-	    for(int i=0; i<upper; i++){
+	    for(int i=0; i<upper-1; i++){
 		if(c[i+1]<c[i]){
 		    temp = c[i];
 		    c[i] = c[i+1];
@@ -48,6 +49,9 @@ public class Sorts{
     }
 
     public static void main(String[]args){
-
+	int[] a = {5,9,2,7,3,1,0};
+	System.out.println(Arrays.toString(a));
+	bubbleSort(a);
+	System.out.println(Arrays.toString(a));
     }
 }
