@@ -42,7 +42,7 @@ public class Sorts{
 		if(c[i+1]<c[i]){
 		    temp = c[i];
 		    c[i] = c[i+1];
-		    c[i+1] = c[i];
+		    c[i+1] = temp;
 		}
 	    }
 	}
