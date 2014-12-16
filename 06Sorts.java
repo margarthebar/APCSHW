@@ -1,26 +1,25 @@
 import java.util.Arrays;
 public class Sorts{
-    /*
      public void insertionSort(int[]c){
-	String x = "";
+	int x = "";
 	//test for each element in array
-	for(int i=1;i<size();i++){
+	for(int i=1;i<c.length;i++){
 	    //compare to each element before it in the array
 	    for(int j=0;j<i;j++){
-		//if data[i]<data[j]
-		if(data[i].compareTo(data[j])<0){
+		//if c[i]<c[j]
+		if(c[i]<c[j]){
 		    //store value to be moved towards the front
-		    x = data[i];
+		    x = c[i];
 		    //now shift everything over (k is just j)
 		    for(int k=i;k>j;k--){
-			data[k] = data[k-1];
+			c[k] = c[k-1];
 		    }
 		    //now add x to the vacant spot
-		    data[j] = x;
+		    c[j] = x;
 		}
 	    }
 	}
-    }
+    }/*
     public void selectionSort(int[]c){
 	String smallest = data[0];
 	int smallestIndex = 0;
