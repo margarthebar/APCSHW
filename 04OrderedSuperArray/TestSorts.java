@@ -14,7 +14,7 @@ public class TestSorts{
 	    b.add(""+i);
 	}
 	start = System.currentTimeMillis();
-	b.insertionSort();
+	b.selectionSort();
 	end = System.currentTimeMillis();
 	System.out.println("selectionSort done: "+(end-start));
 
