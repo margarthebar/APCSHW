@@ -173,16 +173,15 @@ public class SuperArray2{
     }
     public void selectionSort(){
 	String smallest = data[0];
-	int smallestIndex = 0;
 	for(int i=0; i<size(); i++){
+	    smallest = data[i];
 	    for(int j=i; j<size(); j++){
 		if(data[j].compareTo(smallest)<0){
 		    smallest = data[j];
-		    smallestIndex = j;
+		    data[j] = data[i];
+		    data[i] = smallest;
 		}
 	    }
-	    data[smallestIndex] = data[0];
-	    data[0] = smallest;
 	}
     }
     public int find(String target){
