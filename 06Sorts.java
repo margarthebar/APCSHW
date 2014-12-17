@@ -19,21 +19,22 @@ public class Sorts{
 		}
 	    }
 	}
-    }/*
-    public void selectionSort(int[]c){
-	String smallest = data[0];
-	int smallestIndex = 0;
-	for(int i=0; i<size(); i++){
-	    for(int j=i; j<size(); j++){
-		if(data[j].compareTo(smallest)<0){
-		    smallest = data[j];
-		    smallestIndex = j;
+    }
+
+    public static void selectionSort(int[] c){
+	int smallest = c[0];
+	for(int i=0; i<c.length; i++){
+	    smallest = c[i];
+	    for(int j=i; j<c.length; j++){
+		if(c[j]<smallest){
+		    smallest = c[j];
+		    c[j] = c[i];
+		    c[i] = smallest;
 		}
 	    }
-	    data[smallestIndex] = data[0];
-	    data[0] = smallest;
 	}
-    }*/
+    }
+
     public static void bubbleSort(int[]c){
 	int temp = 0;
 	for(int upper=c.length; upper>1; upper--){
@@ -58,10 +59,9 @@ public class Sorts{
 	insertionSort(b);
 	System.out.println(Arrays.toString(b));
 
-	//int[] c = {5,9,2,7,3,1,0};
-	//System.out.println(Arrays.toString(c));
-	//selectionSort(c);
-	//System.out.println(Arrays.toString(c));
+	int[] c = {5,9,2,7,3,1,0};
+	System.out.println(Arrays.toString(c));
+	selectionSort(c);
+	System.out.println(Arrays.toString(c));
     }
 }
-
