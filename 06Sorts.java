@@ -1,7 +1,7 @@
 import java.util.Arrays;
 public class Sorts{
-     public void insertionSort(int[]c){
-	int x = "";
+     public static void insertionSort(int[]c){
+	int x = 0;
 	//test for each element in array
 	for(int i=1;i<c.length;i++){
 	    //compare to each element before it in the array
@@ -52,5 +52,16 @@ public class Sorts{
 	System.out.println(Arrays.toString(a));
 	bubbleSort(a);
 	System.out.println(Arrays.toString(a));
+
+	int[] b = {5,9,2,7,3,1,0};
+	System.out.println(Arrays.toString(b));
+	insertionSort(b);
+	System.out.println(Arrays.toString(b));
+
+	//int[] c = {5,9,2,7,3,1,0};
+	//System.out.println(Arrays.toString(c));
+	//selectionSort(c);
+	//System.out.println(Arrays.toString(c));
     }
 }
+
