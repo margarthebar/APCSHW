@@ -1,6 +1,13 @@
 import java.util.Arrays;
 public class Sorts{
-     public static void insertionSort(int[]c){
+    //extra
+    public static String name(){
+	return "Burkart,Margaret";
+    }
+    public static int period(){
+	return 6;
+    }
+    public static void insertionSort(int[]c){
 	int x = 0;
 	//test for each element in array
 	for(int i=1;i<c.length;i++){
@@ -48,11 +55,19 @@ public class Sorts{
 	}
     }
 
+    public static void radixSort(int[]c){
+	int place = 1;
+	
+    }
     public static void main(String[]args){
+	long startTime,endTime;
 	int[] a = {5,9,2,7,3,1,0};
 	System.out.println(Arrays.toString(a));
+	startTime = System.currentTimeMillis();
 	bubbleSort(a);
+	endTime = System.currentTimeMillis();
 	System.out.println(Arrays.toString(a));
+	System.out.println(endTime-startTime);
 
 	int[] b = {5,9,2,7,3,1,0};
 	System.out.println(Arrays.toString(b));
