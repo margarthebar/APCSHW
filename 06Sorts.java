@@ -55,9 +55,14 @@ public class Sorts{
 	}
     }
 
-    public static void radixSort(int[]c){
+     public static void radixSort(int[]c){
 	int place = 1;
-	
+	ArrayList<ArrayList<int>> bucketArray = new ArrayList<ArrayList<int>>(10);
+	for(int a:c){
+	    for(int i=0;i<10;i++){
+		// add a to ArrayList at index remainder of a/10 in bucketArray
+	    }
+	}
     }
     public static void main(String[]args){
 	long startTime,endTime;
