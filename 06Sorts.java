@@ -1,4 +1,6 @@
 import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.Random;
 public class Sorts{
     //extra
     public static String name(){
@@ -57,13 +59,38 @@ public class Sorts{
 
      public static void radixSort(int[]c){
 	int place = 1;
-	ArrayList<ArrayList<int>> bucketArray = new ArrayList<ArrayList<int>>(10);
+	ArrayList<ArrayList<Integer>> bucketArray = new ArrayList<ArrayList<Integer>>(10);
+	//find the necessary number of passes through the original array
+	int digits = 1;
 	for(int a:c){
-	    for(int i=0;i<10;i++){
-		// add a to ArrayList at index remainder of a/10 in bucketArray
+	    if(a>0){
+		if((""+a).length()>digits){
+		    digits = (""+a).length();
+		}   
+	    }else{//if it's negative, the negative sign will contribute to the length
+		if((""+a).length()-1>digits){
+		    digits = (""+a).length()-1;
+		}
+	    }
+	}
+	//sort into buckets
+	for(int i=0; i<digits; i++){
+	    for(int a:c){
+		bucketArray.get(a%(10*place)).add(a);
+	    }
+	    place++;
+	    //copy values in order over to original array
+	    int indexOriginal = 0;
+	    for(ArrayList<Integer> a:bucketArray){
+		for(int el:a){
+		    c[indexOriginal]=el;
+		    indexOriginal++;
+		}
 	    }
 	}
     }
+    public static randomArray(){}
+
     public static void main(String[]args){
 	long startTime,endTime;
 	int[] a = {5,9,2,7,3,1,0};
@@ -83,5 +110,10 @@ public class Sorts{
 	System.out.println(Arrays.toString(c));
 	selectionSort(c);
 	System.out.println(Arrays.toString(c));
+
+	int[] d = {5,9,2,7,3,1,0};
+	System.out.println(Arrays.toString(d));
+	selectionSort(d);
+	System.out.println(Arrays.toString(d));
     }
 }
