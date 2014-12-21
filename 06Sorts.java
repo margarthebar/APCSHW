@@ -67,17 +67,13 @@ public class Sorts{
 	//find the necessary number of passes through the original array
 	int digits = 1;
 	for(int a:c){
-	    System.out.println((""+a).length());
 	    if((""+a).length()>digits){
 		digits = (""+a).length();
 	    }   
 	}
-	System.out.println(digits);
 	//sort into buckets
 	for(int i=0; i<digits; i++){
-	    System.out.println("place: "+place);
 	    for(int a:c){
-		System.out.println("a: "+a+" digitSort: "+(i+1)+" index: "+((a%place-a%(place/10))/(place/10)));
 		bucketArray.get((a%place-a%(place/10))/(place/10)).add(a);
 	    }
 	    place*=10;
@@ -85,10 +81,11 @@ public class Sorts{
 	    int indexOriginal = 0;
 	    for(ArrayList<Integer> a:bucketArray){
 		for(int el:a){
-		    System.out.println("indexOriginal: "+indexOriginal+" el: "+el);
 		    c[indexOriginal]=el;
 		    indexOriginal++;
 		}
+		//erase values in bucketArray for reuse
+		a.clear();
 	    }
 	}
     }
@@ -104,44 +101,32 @@ public class Sorts{
     public static void main(String[]args){
 	long startTime,endTime;
 	int[] a = randomArray();
-	System.out.println(Arrays.toString(a));
 	startTime = System.currentTimeMillis();
 	bubbleSort(a);
 	endTime = System.currentTimeMillis();
-	System.out.println(Arrays.toString(a));
-	System.out.println(endTime-startTime);
+	System.out.println("bubbleSort: "+(endTime-startTime));
 
 	int[] b = randomArray();
-	System.out.println(Arrays.toString(b));
 	startTime = System.currentTimeMillis();
 	insertionSort(b);
 	endTime = System.currentTimeMillis();
-	System.out.println(Arrays.toString(b));
+	System.out.println("insertionSort: "+(endTime-startTime));
 
 	int[] c = randomArray();
-	System.out.println(Arrays.toString(c));
 	startTime = System.currentTimeMillis();
 	selectionSort(c);
 	endTime = System.currentTimeMillis();
-	System.out.println(Arrays.toString(c));
-	
-	System.out.println((432%100-432%10)/10);
-	System.out.println((461%100-461%10)/10);
-	System.out.println((461%10-461%1)/1);
-	
+	System.out.println("selectionSort: "+(endTime-startTime));
 
-	int[] d = {5,23,7,461,0,12,32,6};
-	System.out.println(Arrays.toString(d));
-	radixSort(d);
-	System.out.println(Arrays.toString(d));
+	int[] e = {5,23,7,461,0,12,32,6};
+	System.out.println(Arrays.toString(e));
+	radixSort(e);
+	System.out.println(Arrays.toString(e));
 
-	/*
 	int[] d = randomArray();
-	System.out.println(Arrays.toString(d));
 	startTime = System.currentTimeMillis();
-	selectionSort(d);
+	radixSort(d);
 	endTime = System.currentTimeMillis();
-	System.out.println(Arrays.toString(d));
-	*/
+	System.out.println("radixSort: "+(endTime-startTime));
     }
 }
