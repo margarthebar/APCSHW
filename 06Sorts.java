@@ -94,6 +94,9 @@ public class Sorts{
 	int[] ans = new int[1000];
 	for(int i=0;i<1000;i++){
 	    ans[i] = rand.nextInt();
+	    if(ans[i]<0){
+		ans[i]*=-1;
+	    }
 	}
 	return ans;
     }
@@ -117,11 +120,6 @@ public class Sorts{
 	selectionSort(c);
 	endTime = System.currentTimeMillis();
 	System.out.println("selectionSort: "+(endTime-startTime));
-
-	int[] e = {5,23,7,461,0,12,32,6};
-	System.out.println(Arrays.toString(e));
-	radixSort(e);
-	System.out.println(Arrays.toString(e));
 
 	int[] d = randomArray();
 	startTime = System.currentTimeMillis();
